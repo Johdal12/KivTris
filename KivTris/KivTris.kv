@@ -1,0 +1,1291 @@
+<StartBtn@Button>:
+    border: (0,0,0,0)
+    size_hint_x: .5
+    font_size: .2 * self.width if .2 * self.width < .5 * self.height else .5 * self.height
+    background_normal: "Button_red6.png"
+    background_down: "Button_down1.png"
+    pos_hint: { "center_x" : .5 }
+
+<GameBtn@StartBtn>:
+    font_size: .15 * self.width if .15 * self.width < .4 * self.height else .4 * self.height
+
+<GameBtnLbl@GameBtn>:
+    background_down: "Button_red6.png"
+
+<SettingsBtn@StartBtn>:
+    font_size: .1 * self.width if .1 * self.width < .4 * self.height else .4 * self.height
+    size_hint_x: 0.75
+
+<CredBtn@Button>:
+    font_size: .15 * self.width if .15 * self.width < .6 * self.height else .6 * self.height
+    color: (0,0,0,1)
+    size_hint: (.1, None)
+    background_normal: "Button_yellow2.png"
+    background_down: "Button_down1.png"
+    pos_hint: { "center_y" : .5 }
+
+<CredLbl@Label>:
+    font_size: .5 * self.height
+    text_size: ( self.parent.width*.9 , None )
+    halign: "center"
+
+<HighscoreLbl1@Label>:
+    font_name: "cour.ttf"
+    font_size: .33 * self.width if .33 * self.width < .9 * self.height else .9 * self.height
+    text_size: ( self.parent.width*.9 , None )
+    halign: "center"
+    color: (1,1,0,1)
+<HighscoreLbl2@HighscoreLbl1>:
+    color: (0,1,1,1)
+
+<Brick@Button>:
+    #size: (12, 12)
+    size_hint: (1.0/12.0, 1.0/22.0)
+    allow_stretch: True
+
+<Menu1>:
+    name: "Startscreen"
+    ## Startscreen
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.width, self.height/2
+            source: "KivTris_back2.png"
+
+    BoxLayout:
+        padding: 10
+        spacing: 20
+        orientation: 'vertical'
+        size: self.parent.size
+        pos: self.parent.pos
+
+        BoxLayout:
+            size_hint: 1., .4
+            orientation: 'vertical'
+            center: root.center
+
+            Button:
+                pos_hint: { "center_x" : .5 }
+                size_hint: .9 , .4
+                allow_stretch: True
+                background_normal: "KivTris_front2.png"
+                background_down: "KivTris_front2.png"
+
+        BoxLayout:
+            orientation: 'vertical'
+            center: root.center
+            size_hint: 1., .6
+            padding: 0
+            spacing: 10
+
+            StartBtn:
+                text:"Credits"
+                on_press:
+                    root.manager.current = "Credits"
+            StartBtn:
+                text:"Game"
+                on_press:
+                    root.manager.current = "Game"
+            StartBtn:
+                text:"Highscore"
+                on_press:
+                    root.manager.current = "Highscore"
+            StartBtn:
+                text:"Quit"
+                on_press:
+                    root.quit_the_game()
+
+<Menu3>:
+    name: "Credits"
+    ## Credits
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.width, self.height/2
+            source: "KivTris_back2_dark.png"
+
+    BoxLayout:
+        padding: 10
+        spacing: 20
+        orientation: 'vertical'
+        size: self.parent.size
+        pos: self.parent.pos
+
+
+        BoxLayout:
+            size_hint: 1., .5
+            orientation: 'vertical'
+            center: root.center
+
+            Label:
+                text: "Credits"
+                font_size: 24
+
+            CredLbl:
+                text:      root.scrollingText[ 0 + 3*root.offsetList]
+                font_size: root.scrollingText[ 1 + 3*root.offsetList] + root.stdFontSize
+                color:     root.scrollingText[ 2 + 3*root.offsetList]
+            CredLbl:
+                text:      root.scrollingText[ 3 + 3*root.offsetList]
+                font_size: root.scrollingText[ 4 + 3*root.offsetList] + root.stdFontSize
+                color:     root.scrollingText[ 5 + 3*root.offsetList]
+            CredLbl:
+                text:      root.scrollingText[ 6 + 3*root.offsetList]
+                font_size: root.scrollingText[ 7 + 3*root.offsetList] + root.stdFontSize
+                color:     root.scrollingText[ 8 + 3*root.offsetList]
+            CredLbl:
+                text:      root.scrollingText[ 9 + 3*root.offsetList]
+                font_size: root.scrollingText[10 + 3*root.offsetList] + root.stdFontSize
+                color:     root.scrollingText[11 + 3*root.offsetList]
+            CredLbl:
+                text:      root.scrollingText[12 + 3*root.offsetList]
+                font_size: root.scrollingText[13 + 3*root.offsetList] + root.stdFontSize
+                color:     root.scrollingText[14 + 3*root.offsetList]
+            CredLbl:
+                text:      root.scrollingText[15 + 3*root.offsetList]
+                font_size: root.scrollingText[16 + 3*root.offsetList] + root.stdFontSize
+                color:     root.scrollingText[17 + 3*root.offsetList]
+            CredLbl:
+                text:      root.scrollingText[18 + 3*root.offsetList]
+                font_size: root.scrollingText[19 + 3*root.offsetList] + root.stdFontSize
+                color:     root.scrollingText[20 + 3*root.offsetList]
+            CredLbl:
+                text:      root.scrollingText[21 + 3*root.offsetList]
+                font_size: root.scrollingText[22 + 3*root.offsetList] + root.stdFontSize
+                color:     root.scrollingText[23 + 3*root.offsetList]
+            CredLbl:
+                text:      root.scrollingText[24 + 3*root.offsetList]
+                font_size: root.scrollingText[25 + 3*root.offsetList] + root.stdFontSize
+                color:     root.scrollingText[26 + 3*root.offsetList]
+            CredLbl:
+                text:      root.scrollingText[27 + 3*root.offsetList]
+                font_size: root.scrollingText[28 + 3*root.offsetList] + root.stdFontSize
+                color:     root.scrollingText[29 + 3*root.offsetList]
+            CredLbl:
+                text:      root.scrollingText[30 + 3*root.offsetList]
+                font_size: root.scrollingText[31 + 3*root.offsetList] + root.stdFontSize
+                color:     root.scrollingText[32 + 3*root.offsetList]
+
+        BoxLayout:
+            size_hint: 1., .4
+            orientation: 'horizontal'
+            padding: 20
+            spacing: 20
+
+            CredBtn:
+                text:"Font - ("+str(root.stdFontSize-1)+")"
+                pos_hint_x: .25
+                size_hint: .125, .25
+                on_press:
+                    root.reduce_std_font_size()
+            CredBtn:
+                text: ("Pause" if root.scrollingTextPaused == False else "Resume")
+                pos_hint_x: .5
+                size_hint: .125, .25
+                on_press:
+                    root.pause_scrolling_text()
+            CredBtn:
+                text:"Font + ("+str(root.stdFontSize+1)+")"
+                pos_hint_x: .75
+                size_hint: .125, .25
+                on_press:
+                    root.raise_std_font_size()
+
+        BoxLayout:
+            orientation: 'vertical'
+            center: root.center
+            size_hint: 1., .10
+            padding: 0
+            spacing: 10
+
+            SettingsBtn:
+                text:"back to menu"
+                on_press:
+                    root.manager.current = "Startscreen"
+
+<Menu4>:
+    name: "Game"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.width, self.height/2
+            source: "KivTris_back2_dark.png"
+
+    ## full screen boxlayout
+    BoxLayout:
+        orientation: 'vertical'
+        center: root.center
+        size_hint: 1., 1.
+        padding: 0
+        spacing: 0
+
+        ##top
+        GridLayout:
+            orientation: 'horizontal'
+            size_hint: 1., .075
+            cols: 2
+            rows: 1
+            padding: 0
+            spacing: 0
+            AnchorLayout:
+                size_hint: .66, 1.
+                anchor_x: "center"
+                anchor_y: "center"
+                Button:
+                    border: (0,0,0,0)
+                    size_hint: (None, 1.)
+                    allow_stretch: False
+                    background_normal: "KivTris_front2.png"
+                    background_down: "KivTris_front2.png"
+            AnchorLayout:
+                size_hint: .34, 1.
+                anchor_x: "center"
+                anchor_y: "center"
+                SettingsBtn:
+                    border: (0,0,0,0)
+                    size_hint_y: .8
+                    text:"back to menu"
+                    font_size:16
+                    on_press:
+                        root.manager.current = "Startscreen"
+
+        ##middle = gamefield + info
+        GridLayout:
+            orientation: 'horizontal'
+            size_hint_x: 1.
+            padding: 0
+            spacing: 0
+            cols: 2
+
+            AnchorLayout:
+                size_hint_y: 1.0
+                anchor_x: "center"
+                anchor_y: "center"
+                padding: 1
+
+                GridLayout:
+                    ## field size = 12 x 22 bricks
+                    size_hint_y: 1.0 if (22.0 / 12.0) * (self.parent.width / self.parent.height) > 1.0 else (22.0 / 12.0) * (self.parent.width / self.parent.height)
+                    size_hint_x: 1.0 if (12.0 / 22.0) * (self.parent.height / self.parent.width) > 1.0 else (12.0 / 22.0) * (self.parent.height / self.parent.width)
+                    padding: 0
+                    spacing: 0
+                    rows: 22
+                    cols: 12
+
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 0][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[ 0][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 0][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[ 0][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 0][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[ 0][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 0][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[ 0][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 0][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[ 0][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 0][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[ 0][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 0][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[ 0][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 0][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[ 0][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 0][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[ 0][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 0][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[ 0][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 0][10])+".png"
+                        background_down: "block"+str(root.brick_field[ 0][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 0][11])+".png"
+                        background_down: "block"+str(root.brick_field[ 0][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 1][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[ 1][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 1][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[ 1][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 1][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[ 1][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 1][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[ 1][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 1][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[ 1][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 1][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[ 1][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 1][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[ 1][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 1][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[ 1][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 1][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[ 1][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 1][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[ 1][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 1][10])+".png"
+                        background_down: "block"+str(root.brick_field[ 1][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 1][11])+".png"
+                        background_down: "block"+str(root.brick_field[ 1][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 2][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[ 2][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 2][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[ 2][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 2][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[ 2][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 2][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[ 2][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 2][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[ 2][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 2][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[ 2][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 2][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[ 2][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 2][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[ 2][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 2][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[ 2][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 2][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[ 2][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 2][10])+".png"
+                        background_down: "block"+str(root.brick_field[ 2][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 2][11])+".png"
+                        background_down: "block"+str(root.brick_field[ 2][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 3][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[ 3][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 3][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[ 3][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 3][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[ 3][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 3][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[ 3][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 3][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[ 3][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 3][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[ 3][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 3][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[ 3][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 3][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[ 3][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 3][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[ 3][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 3][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[ 3][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 3][10])+".png"
+                        background_down: "block"+str(root.brick_field[ 3][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 3][11])+".png"
+                        background_down: "block"+str(root.brick_field[ 3][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 4][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[ 4][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 4][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[ 4][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 4][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[ 4][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 4][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[ 4][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 4][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[ 4][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 4][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[ 4][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 4][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[ 4][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 4][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[ 4][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 4][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[ 4][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 4][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[ 4][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 4][10])+".png"
+                        background_down: "block"+str(root.brick_field[ 4][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 4][11])+".png"
+                        background_down: "block"+str(root.brick_field[ 4][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 5][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[ 5][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 5][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[ 5][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 5][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[ 5][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 5][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[ 5][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 5][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[ 5][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 5][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[ 5][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 5][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[ 5][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 5][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[ 5][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 5][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[ 5][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 5][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[ 5][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 5][10])+".png"
+                        background_down: "block"+str(root.brick_field[ 5][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 5][11])+".png"
+                        background_down: "block"+str(root.brick_field[ 5][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 6][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[ 6][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 6][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[ 6][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 6][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[ 6][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 6][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[ 6][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 6][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[ 6][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 6][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[ 6][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 6][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[ 6][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 6][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[ 6][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 6][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[ 6][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 6][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[ 6][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 6][10])+".png"
+                        background_down: "block"+str(root.brick_field[ 6][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 6][11])+".png"
+                        background_down: "block"+str(root.brick_field[ 6][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 7][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[ 7][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 7][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[ 7][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 7][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[ 7][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 7][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[ 7][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 7][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[ 7][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 7][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[ 7][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 7][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[ 7][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 7][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[ 7][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 7][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[ 7][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 7][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[ 7][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 7][10])+".png"
+                        background_down: "block"+str(root.brick_field[ 7][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 7][11])+".png"
+                        background_down: "block"+str(root.brick_field[ 7][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 8][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[ 8][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 8][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[ 8][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 8][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[ 8][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 8][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[ 8][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 8][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[ 8][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 8][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[ 8][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 8][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[ 8][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 8][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[ 8][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 8][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[ 8][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 8][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[ 8][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 8][10])+".png"
+                        background_down: "block"+str(root.brick_field[ 8][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 8][11])+".png"
+                        background_down: "block"+str(root.brick_field[ 8][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 9][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[ 9][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 9][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[ 9][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 9][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[ 9][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 9][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[ 9][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 9][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[ 9][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 9][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[ 9][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 9][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[ 9][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 9][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[ 9][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 9][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[ 9][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 9][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[ 9][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 9][10])+".png"
+                        background_down: "block"+str(root.brick_field[ 9][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[ 9][11])+".png"
+                        background_down: "block"+str(root.brick_field[ 9][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[10][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[10][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[10][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[10][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[10][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[10][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[10][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[10][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[10][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[10][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[10][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[10][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[10][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[10][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[10][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[10][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[10][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[10][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[10][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[10][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[10][10])+".png"
+                        background_down: "block"+str(root.brick_field[10][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[10][11])+".png"
+                        background_down: "block"+str(root.brick_field[10][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[11][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[11][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[11][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[11][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[11][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[11][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[11][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[11][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[11][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[11][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[11][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[11][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[11][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[11][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[11][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[11][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[11][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[11][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[11][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[11][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[11][10])+".png"
+                        background_down: "block"+str(root.brick_field[11][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[11][11])+".png"
+                        background_down: "block"+str(root.brick_field[11][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[12][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[12][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[12][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[12][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[12][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[12][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[12][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[12][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[12][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[12][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[12][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[12][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[12][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[12][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[12][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[12][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[12][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[12][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[12][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[12][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[12][10])+".png"
+                        background_down: "block"+str(root.brick_field[12][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[12][11])+".png"
+                        background_down: "block"+str(root.brick_field[12][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[13][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[13][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[13][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[13][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[13][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[13][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[13][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[13][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[13][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[13][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[13][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[13][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[13][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[13][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[13][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[13][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[13][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[13][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[13][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[13][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[13][10])+".png"
+                        background_down: "block"+str(root.brick_field[13][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[13][11])+".png"
+                        background_down: "block"+str(root.brick_field[13][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[14][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[14][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[14][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[14][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[14][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[14][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[14][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[14][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[14][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[14][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[14][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[14][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[14][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[14][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[14][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[14][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[14][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[14][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[14][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[14][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[14][10])+".png"
+                        background_down: "block"+str(root.brick_field[14][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[14][11])+".png"
+                        background_down: "block"+str(root.brick_field[14][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[15][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[15][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[15][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[15][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[15][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[15][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[15][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[15][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[15][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[15][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[15][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[15][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[15][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[15][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[15][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[15][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[15][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[15][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[15][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[15][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[15][10])+".png"
+                        background_down: "block"+str(root.brick_field[15][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[15][11])+".png"
+                        background_down: "block"+str(root.brick_field[15][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[16][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[16][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[16][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[16][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[16][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[16][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[16][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[16][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[16][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[16][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[16][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[16][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[16][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[16][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[16][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[16][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[16][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[16][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[16][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[16][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[16][10])+".png"
+                        background_down: "block"+str(root.brick_field[16][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[16][11])+".png"
+                        background_down: "block"+str(root.brick_field[16][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[17][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[17][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[17][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[17][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[17][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[17][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[17][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[17][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[17][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[17][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[17][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[17][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[17][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[17][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[17][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[17][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[17][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[17][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[17][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[17][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[17][10])+".png"
+                        background_down: "block"+str(root.brick_field[17][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[17][11])+".png"
+                        background_down: "block"+str(root.brick_field[17][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[18][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[18][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[18][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[18][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[18][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[18][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[18][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[18][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[18][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[18][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[18][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[18][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[18][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[18][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[18][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[18][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[18][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[18][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[18][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[18][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[18][10])+".png"
+                        background_down: "block"+str(root.brick_field[18][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[18][11])+".png"
+                        background_down: "block"+str(root.brick_field[18][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[19][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[19][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[19][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[19][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[19][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[19][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[19][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[19][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[19][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[19][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[19][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[19][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[19][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[19][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[19][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[19][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[19][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[19][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[19][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[19][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[19][10])+".png"
+                        background_down: "block"+str(root.brick_field[19][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[19][11])+".png"
+                        background_down: "block"+str(root.brick_field[19][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[20][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[20][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[20][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[20][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[20][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[20][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[20][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[20][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[20][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[20][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[20][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[20][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[20][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[20][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[20][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[20][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[20][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[20][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[20][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[20][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[20][10])+".png"
+                        background_down: "block"+str(root.brick_field[20][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[20][11])+".png"
+                        background_down: "block"+str(root.brick_field[20][11])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[21][ 0])+".png"
+                        background_down: "block"+str(root.brick_field[21][ 0])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[21][ 1])+".png"
+                        background_down: "block"+str(root.brick_field[21][ 1])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[21][ 2])+".png"
+                        background_down: "block"+str(root.brick_field[21][ 2])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[21][ 3])+".png"
+                        background_down: "block"+str(root.brick_field[21][ 3])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[21][ 4])+".png"
+                        background_down: "block"+str(root.brick_field[21][ 4])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[21][ 5])+".png"
+                        background_down: "block"+str(root.brick_field[21][ 5])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[21][ 6])+".png"
+                        background_down: "block"+str(root.brick_field[21][ 6])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[21][ 7])+".png"
+                        background_down: "block"+str(root.brick_field[21][ 7])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[21][ 8])+".png"
+                        background_down: "block"+str(root.brick_field[21][ 8])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[21][ 9])+".png"
+                        background_down: "block"+str(root.brick_field[21][ 9])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[21][10])+".png"
+                        background_down: "block"+str(root.brick_field[21][10])+".png"
+                    Brick:
+                        background_normal: "block"+str(root.brick_field[21][11])+".png"
+                        background_down: "block"+str(root.brick_field[21][11])+".png"
+
+            BoxLayout:
+                orientation: 'vertical'
+                center: root.center
+                size_hint_y: 1.0
+                size_hint_x: 1.0 if (10.0 / 22.0) * (self.parent.height / self.parent.width) > 1.0 else (10.0 / 22.0) * (self.parent.height / self.parent.width)
+                padding: 0
+                spacing: 5
+
+                GridLayout:
+                    rows: 4
+                    size_hint: 1.0, .4
+                    spacing:5
+                    padding:5
+                    GameBtnLbl:
+                        text:"Score: " + str(root.score)
+                    GameBtnLbl:
+                        text:"Level: " + str(root.level)
+                    GameBtnLbl:
+                        text:"Lines: " + str(root.lines)
+                    GameBtnLbl:
+                        text:"Next:"
+
+                AnchorLayout:
+                    size_hint: 1., .3
+                    anchor_x: "center"
+                    anchor_y: "center"
+
+                    GridLayout:
+                        center: root.center
+                        size_hint_y: .8 if (self.parent.width / self.parent.height) > .8 else (self.parent.width / self.parent.height)
+                        size_hint_x: .8 if (self.parent.height / self.parent.width) > .8 else (self.parent.height / self.parent.width)
+                        padding: 2
+                        spacing: 1
+                        rows:4
+                        cols:4
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[0][0])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[0][1])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[0][2])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[0][3])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[1][0])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[1][1])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[1][2])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[1][3])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[2][0])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[2][1])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[2][2])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[2][3])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[3][0])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[3][1])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[3][2])+".png"
+                        Brick:
+                            background_normal: "block"+str(root.next_brick[3][3])+".png"
+
+                GridLayout:
+                    rows: 3
+                    size_hint: 1.0, .3
+                    spacing:5
+                    padding:5
+                    GameBtn:
+                        text: ("Music off" if root.music_off == False else "Music on")
+                        on_press:
+                            root.music_on_off()
+                    GameBtn:
+                        text: ("Pause" if root.game_paused == False else "Resume")
+                        on_press:
+                            root.pause_the_game()
+
+        ##bottom
+        GridLayout:
+            orientation: 'horizontal'
+            center: root.center
+            size_hint: 1., .15
+            padding: 0
+            spacing: 0
+            cols: 4
+            col_default_width: self.parent.width * .25
+            AnchorLayout:
+                anchor_x: "center"
+                anchor_y: "center"
+                Button:
+                    border: (0,0,0,0)
+                    size_hint_y: 0.9
+                    size_hint_x: self.height / self.parent.width
+                    background_normal: "Button_control3_left.png"
+                    background_down:   "Button_control3_left_down.png"
+                    on_release:
+                        root.brick_moves_left()
+            AnchorLayout:
+                anchor_x: "center"
+                anchor_y: "center"
+                Button:
+                    border: (0,0,0,0)
+                    size_hint_y: 0.9
+                    size_hint_x: self.height / self.parent.width
+                    background_normal: "Button_control3_down.png"
+                    background_down:   "Button_control3_down_down.png"
+                    on_release:
+                        root.brick_moves_down(1)
+            AnchorLayout:
+                anchor_x: "center"
+                anchor_y: "center"
+                Button:
+                    border: (0,0,0,0)
+                    size_hint_y: 0.9
+                    size_hint_x: self.height / self.parent.width
+                    background_normal: "Button_control3_right.png"
+                    background_down:   "Button_control3_right_down.png"
+                    on_release:
+                        root.brick_moves_right()
+            AnchorLayout:
+                anchor_x: "center"
+                anchor_y: "center"
+                Button:
+                    border: (0,0,0,0)
+                    size_hint_y: 0.9
+                    size_hint_x: self.height / self.parent.width
+                    background_normal: "Button_control3_rotate.png"
+                    background_down:   "Button_control3_rotate_down.png"
+                    on_release:
+                        root.brick_rotates()
+
+
+<Menu5>:
+    name: "Highscore"
+    ## Highscore
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.width, self.height/2
+            source: "KivTris_back2_dark.png"
+
+    BoxLayout:
+        padding: 10
+        spacing: 20
+        orientation: 'vertical'
+        size: self.parent.size
+        pos: self.parent.pos
+
+        BoxLayout:
+            size_hint: 1., .6
+            orientation: 'vertical'
+            center: root.center
+
+            Label:
+                text: "Highscore"
+                font_size: 24
+
+            HighscoreLbl1:
+                text: " "
+            HighscoreLbl1:
+                text: root.highscoreText[ 0]
+            HighscoreLbl2:
+                text: root.highscoreText[ 1]
+            HighscoreLbl1:
+                text: root.highscoreText[ 2]
+            HighscoreLbl2:
+                text: root.highscoreText[ 3]
+            HighscoreLbl1:
+                text: root.highscoreText[ 4]
+            HighscoreLbl2:
+                text: root.highscoreText[ 5]
+            HighscoreLbl1:
+                text: root.highscoreText[ 6]
+            HighscoreLbl2:
+                text: root.highscoreText[ 7]
+            HighscoreLbl1:
+                text: root.highscoreText[ 8]
+            HighscoreLbl2:
+                text: root.highscoreText[ 9]
+            HighscoreLbl1:
+                text: root.highscoreText[10]
+            HighscoreLbl2:
+                text: root.highscoreText[11]
+            HighscoreLbl1:
+                text: root.highscoreText[12]
+            HighscoreLbl2:
+                text: root.highscoreText[13]
+            HighscoreLbl1:
+                text: root.highscoreText[14]
+
+
+        BoxLayout:
+            padding: 30
+            spacing: 10
+            size_hint: 1., .4
+            orientation: 'vertical'
+            center: root.center
+
+            TextInput:
+                id: highscoreinput
+                multiline: False
+                size_hint_x: 0.5
+                valign: "middle"
+                halign: "center"
+                hint_text: "Insert_your_name"
+                pos_hint: { "center_x" : .5 }
+                opacity: 0 if root.enterNewHighscore==False else 1
+                on_text_validate: root.name_entered(self.text)
+
+            SettingsBtn:
+                text:"New Highscore"
+                on_press:
+                    root.generate_new_highscore()
+
+            SettingsBtn:
+                text:"back to menu"
+                on_press:
+                    root.manager.current = "Startscreen"
+

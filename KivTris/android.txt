@@ -1,0 +1,3 @@
+title=KivTris
+author=Johdal12
+orientation=portrait
